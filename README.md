@@ -12,3 +12,5 @@ self.myFetchedResultsController.delegate = self.myFetchedResultsControllerDelega
 ```
 
 This is based on the workarounds documented by [Michael Fey](https://github.com/MrRooni)'s article "[UITableview and NSFetchedResultsController updates done right](http://www.fruitstandsoftware.com/blog/2013/02/uitableview-and-nsfetchedresultscontroller-updates-done-right/)".
+
+I will be adding an example project to show it's use
