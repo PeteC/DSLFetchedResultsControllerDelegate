@@ -1,0 +1,246 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		24FEF85616EF386500D8835E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF85516EF386500D8835E /* Foundation.framework */; };
+		24FEF85B16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */; };
+		24FEF85D16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */; };
+		24FEF86516EF38C200D8835E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF86316EF38C200D8835E /* CoreData.framework */; };
+		24FEF86616EF38C200D8835E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF86416EF38C200D8835E /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		24FEF85016EF386500D8835E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				24FEF85B16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		24FEF85216EF386500D8835E /* libDSLFetchedResultsControllerDelegate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSLFetchedResultsControllerDelegate.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		24FEF85516EF386500D8835E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLFetchedResultsControllerDelegate.h; sourceTree = "<group>"; };
+		24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLFetchedResultsControllerDelegate.m; sourceTree = "<group>"; };
+		24FEF86316EF38C200D8835E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		24FEF86416EF38C200D8835E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		24FEF84F16EF386500D8835E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24FEF86516EF38C200D8835E /* CoreData.framework in Frameworks */,
+				24FEF86616EF38C200D8835E /* UIKit.framework in Frameworks */,
+				24FEF85616EF386500D8835E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		24FEF84916EF386500D8835E = {
+			isa = PBXGroup;
+			children = (
+				24FEF85716EF386500D8835E /* DSLFetchedResultsControllerDelegate */,
+				24FEF85416EF386500D8835E /* Frameworks */,
+				24FEF85316EF386500D8835E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		24FEF85316EF386500D8835E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				24FEF85216EF386500D8835E /* libDSLFetchedResultsControllerDelegate.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		24FEF85416EF386500D8835E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24FEF86316EF38C200D8835E /* CoreData.framework */,
+				24FEF86416EF38C200D8835E /* UIKit.framework */,
+				24FEF85516EF386500D8835E /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		24FEF85716EF386500D8835E /* DSLFetchedResultsControllerDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */,
+				24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */,
+			);
+			path = DSLFetchedResultsControllerDelegate;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		24FEF85116EF386500D8835E /* DSLFetchedResultsControllerDelegate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 24FEF86016EF386500D8835E /* Build configuration list for PBXNativeTarget "DSLFetchedResultsControllerDelegate" */;
+			buildPhases = (
+				24FEF84E16EF386500D8835E /* Sources */,
+				24FEF84F16EF386500D8835E /* Frameworks */,
+				24FEF85016EF386500D8835E /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DSLFetchedResultsControllerDelegate;
+			productName = DSLFetchedResultsControllerDelegate;
+			productReference = 24FEF85216EF386500D8835E /* libDSLFetchedResultsControllerDelegate.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		24FEF84A16EF386500D8835E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Daniel Tull";
+			};
+			buildConfigurationList = 24FEF84D16EF386500D8835E /* Build configuration list for PBXProject "DSLFetchedResultsControllerDelegate" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 24FEF84916EF386500D8835E;
+			productRefGroup = 24FEF85316EF386500D8835E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				24FEF85116EF386500D8835E /* DSLFetchedResultsControllerDelegate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		24FEF84E16EF386500D8835E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24FEF85D16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		24FEF85E16EF386500D8835E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		24FEF85F16EF386500D8835E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		24FEF86116EF386500D8835E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DSLFetchedResultsControllerDelegate.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		24FEF86216EF386500D8835E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DSLFetchedResultsControllerDelegate.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		24FEF84D16EF386500D8835E /* Build configuration list for PBXProject "DSLFetchedResultsControllerDelegate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24FEF85E16EF386500D8835E /* Debug */,
+				24FEF85F16EF386500D8835E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		24FEF86016EF386500D8835E /* Build configuration list for PBXNativeTarget "DSLFetchedResultsControllerDelegate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				24FEF86116EF386500D8835E /* Debug */,
+				24FEF86216EF386500D8835E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 24FEF84A16EF386500D8835E /* Project object */;
+}
