@@ -102,11 +102,11 @@
             if (![self.deletedSectionIndexes containsIndex:indexPath.section]) {
                 [self.deletedRowIndexPaths addObject:indexPath];
             }
-        break;
+            break;
 
         case NSFetchedResultsChangeUpdate:
             [self.updatedRowIndexPaths addObject:indexPath];
-        break;
+            break;
     }
 }
 
@@ -133,12 +133,12 @@
         UITableView *tableView = self.tableOrCollectionView;
         [tableView beginUpdates];
 
-        [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
-        [tableView insertSections:self.insertedSectionIndexes withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationAutomatic]];
+        [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationAutomatic]];
 
-        [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:UITableViewRowAnimationLeft];
-        [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:UITableViewRowAnimationRight];
-        [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationLeft]];
+        [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationRight]];
+        [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate defaultAnimation:UITableViewRowAnimationAutomatic]];
 
         [tableView endUpdates];
     }
@@ -161,6 +161,29 @@
     self.deletedRowIndexPaths = nil;
     self.insertedRowIndexPaths = nil;
     self.updatedRowIndexPaths = nil;
+}
+
+
+#pragma mark Delegate calling methods
+
+- (UITableViewRowAnimation)rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType defaultAnimation:(UITableViewRowAnimation)defaultAnimation {
+    UITableViewRowAnimation animation = defaultAnimation;
+
+    if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegate:rowAnimationForChangeType:)]) {
+        animation = [self.delegate fetchedResultsControllerDelegate:self rowAnimationForChangeType:changeType];
+    }
+
+    return animation;
+}
+
+- (UITableViewRowAnimation)sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType defaultAnimation:(UITableViewRowAnimation)defaultAnimation {
+    UITableViewRowAnimation animation = defaultAnimation;
+
+    if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegate:sectionAnimationForChangeType:)]) {
+        animation = [self.delegate fetchedResultsControllerDelegate:self sectionAnimationForChangeType:changeType];
+    }
+
+    return animation;
 }
 
 @end

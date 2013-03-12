@@ -32,11 +32,29 @@
  */
 
 #import <UIKit/UIKit.h>
+@protocol DSLFetchedResultsControllerDelegateDelegate;
 
 
 @interface DSLFetchedResultsControllerDelegate : NSObject<NSFetchedResultsControllerDelegate>
 
+@property (nonatomic, weak) id<DSLFetchedResultsControllerDelegateDelegate> delegate;
+
 - (id)initWithTableView:(UITableView*)tableView;
 - (id)initWithCollectionView:(UICollectionView*)collectionView;
+
+@end
+
+
+typedef NS_ENUM(NSInteger, DSLFetchedResultsControllerDelegateChangeType) {
+    DSLFetchedResultsControllerDelegateInsert,
+    DSLFetchedResultsControllerDelegateDelete,
+    DSLFetchedResultsControllerDelegateUpdate,
+};
+
+@protocol DSLFetchedResultsControllerDelegateDelegate <NSObject>
+
+@optional
+- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
+- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
 
 @end
