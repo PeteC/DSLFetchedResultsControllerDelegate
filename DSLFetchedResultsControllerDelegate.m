@@ -105,7 +105,9 @@
             break;
 
         case NSFetchedResultsChangeUpdate:
-            [self.updatedRowIndexPaths addObject:indexPath];
+            if ([self shouldUpdateRowAtIndexPath:indexPath]) {
+                [self.updatedRowIndexPaths addObject:indexPath];
+            }
             break;
     }
 }
@@ -184,6 +186,16 @@
     }
 
     return animation;
+}
+
+- (BOOL)shouldUpdateRowAtIndexPath:(NSIndexPath*)indexPath {
+    BOOL shouldUpdate = YES;
+
+    if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegate:shouldUpdateRowAtIndexPath:)]) {
+        shouldUpdate = [self.delegate fetchedResultsControllerDelegate:self shouldUpdateRowAtIndexPath:indexPath];
+    }
+
+    return shouldUpdate;
 }
 
 @end
