@@ -142,12 +142,12 @@
             UITableView *tableView = self.tableOrCollectionView;
             [tableView beginUpdates];
 
-            [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationAutomatic]];
-            [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationAutomatic]];
+            [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
+            [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
 
-            [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationLeft]];
-            [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationRight]];
-            [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate defaultAnimation:UITableViewRowAnimationAutomatic]];
+            [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
+            [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
+            [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate]];
 
             [tableView endUpdates];
         }
@@ -180,8 +180,8 @@
 
 #pragma mark Delegate calling methods
 
-- (UITableViewRowAnimation)rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType defaultAnimation:(UITableViewRowAnimation)defaultAnimation {
-    UITableViewRowAnimation animation = defaultAnimation;
+- (UITableViewRowAnimation)rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType {
+    UITableViewRowAnimation animation = UITableViewRowAnimationAutomatic;
 
     if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegate:rowAnimationForChangeType:)]) {
         animation = [self.delegate fetchedResultsControllerDelegate:self rowAnimationForChangeType:changeType];
@@ -190,8 +190,8 @@
     return animation;
 }
 
-- (UITableViewRowAnimation)sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType defaultAnimation:(UITableViewRowAnimation)defaultAnimation {
-    UITableViewRowAnimation animation = defaultAnimation;
+- (UITableViewRowAnimation)sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType {
+    UITableViewRowAnimation animation = UITableViewRowAnimationAutomatic;
 
     if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegate:sectionAnimationForChangeType:)]) {
         animation = [self.delegate fetchedResultsControllerDelegate:self sectionAnimationForChangeType:changeType];
