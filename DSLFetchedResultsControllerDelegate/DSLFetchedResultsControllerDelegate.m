@@ -130,31 +130,43 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    // Apply the changes to whatever control we have
-    if ([self.tableOrCollectionView isKindOfClass:[UITableView class]]) {
-        UITableView *tableView = self.tableOrCollectionView;
-        [tableView beginUpdates];
+    BOOL hasChanges = (self.insertedRowIndexPaths.count > 0 || self.deletedSectionIndexes.count > 0 || self.deletedRowIndexPaths.count > 0 || self.insertedRowIndexPaths > 0 || self.updatedRowIndexPaths.count > 0);
 
-        [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationAutomatic]];
-        [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationAutomatic]];
+    if (hasChanges) {
+        if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateWillUpdateContent:)]) {
+            [self.delegate fetchedResultsControllerDelegateWillUpdateContent:self];
+        }
 
-        [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationLeft]];
-        [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationRight]];
-        [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate defaultAnimation:UITableViewRowAnimationAutomatic]];
+        // Apply the changes to whatever control we have
+        if ([self.tableOrCollectionView isKindOfClass:[UITableView class]]) {
+            UITableView *tableView = self.tableOrCollectionView;
+            [tableView beginUpdates];
 
-        [tableView endUpdates];
-    }
-    else if ([self.tableOrCollectionView isKindOfClass:[UICollectionView class]]) {
-        UICollectionView *collectionView = self.tableOrCollectionView;
+            [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationAutomatic]];
+            [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationAutomatic]];
 
-        [collectionView performBatchUpdates:^{
-            [collectionView deleteSections:self.deletedSectionIndexes];
-            [collectionView insertSections:self.insertedSectionIndexes];
+            [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete defaultAnimation:UITableViewRowAnimationLeft]];
+            [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert defaultAnimation:UITableViewRowAnimationRight]];
+            [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate defaultAnimation:UITableViewRowAnimationAutomatic]];
 
-            [collectionView deleteItemsAtIndexPaths:self.deletedRowIndexPaths];
-            [collectionView insertItemsAtIndexPaths:self.insertedRowIndexPaths];
-            [collectionView reloadItemsAtIndexPaths:self.updatedRowIndexPaths];
-        } completion:^(BOOL finished) {}];
+            [tableView endUpdates];
+        }
+        else if ([self.tableOrCollectionView isKindOfClass:[UICollectionView class]]) {
+            UICollectionView *collectionView = self.tableOrCollectionView;
+
+            [collectionView performBatchUpdates:^{
+                [collectionView deleteSections:self.deletedSectionIndexes];
+                [collectionView insertSections:self.insertedSectionIndexes];
+
+                [collectionView deleteItemsAtIndexPaths:self.deletedRowIndexPaths];
+                [collectionView insertItemsAtIndexPaths:self.insertedRowIndexPaths];
+                [collectionView reloadItemsAtIndexPaths:self.updatedRowIndexPaths];
+            } completion:^(BOOL finished) {}];
+        }
+
+        if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateDidUpdateContent:)]) {
+            [self.delegate fetchedResultsControllerDelegateDidUpdateContent:self];
+        }
     }
 
     // Nil out the collections now we're done
