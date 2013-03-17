@@ -27,23 +27,26 @@ DSLFetchedResultsControllerDelegate has it's own optional delegate to allow you 
 
 
 ```Objective-C
-- (BOOL)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate shouldUpdateRowAtIndexPath:(NSIndexPath*)indexPath
+- (BOOL)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate
+              shouldUpdateRowAtIndexPath:(NSIndexPath*)indexPath;
 ```
 Use this method to prevent updating an object's row or cell. You may want to do this if, for example, the properties that have changed don't warrant an update (by inspecting the object's changedValuesForCurrentEvent)
 
 .
 
 ```Objective-C
-- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType
-- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
+- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate 
+                              sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
+- (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate 
+                                  rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
 ```
 Use these methods to specify the animation style to use when updating a row or section. By default, DSLFetchedResultsControllerDelegate uses UITableViewRowAnimationAutomatic.
 
 .
 
 ```Objective-C
-- (void)fetchedResultsControllerDelegateWillUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate
-- (void)fetchedResultsControllerDelegateDidUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate
+- (void)fetchedResultsControllerDelegateWillUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate;
+- (void)fetchedResultsControllerDelegateDidUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate;
 ```
 These methods are called before and after a DSLFetchedResultsControllerDelegate updates it's table or collection view.
 
