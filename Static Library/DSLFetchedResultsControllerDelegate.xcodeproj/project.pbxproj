@@ -8,10 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		24FEF85616EF386500D8835E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF85516EF386500D8835E /* Foundation.framework */; };
-		24FEF85B16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */; };
-		24FEF85D16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */; };
 		24FEF86516EF38C200D8835E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF86316EF38C200D8835E /* CoreData.framework */; };
 		24FEF86616EF38C200D8835E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24FEF86416EF38C200D8835E /* UIKit.framework */; };
+		B56F5A7616F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B56F5A7516F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -21,7 +20,6 @@
 			dstPath = "include/${PRODUCT_NAME}";
 			dstSubfolderSpec = 16;
 			files = (
-				24FEF85B16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,10 +28,10 @@
 /* Begin PBXFileReference section */
 		24FEF85216EF386500D8835E /* libDSLFetchedResultsControllerDelegate.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSLFetchedResultsControllerDelegate.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		24FEF85516EF386500D8835E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSLFetchedResultsControllerDelegate.h; sourceTree = "<group>"; };
-		24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSLFetchedResultsControllerDelegate.m; sourceTree = "<group>"; };
 		24FEF86316EF38C200D8835E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		24FEF86416EF38C200D8835E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		B56F5A7416F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSLFetchedResultsControllerDelegate.h; sourceTree = "<group>"; };
+		B56F5A7516F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSLFetchedResultsControllerDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +51,7 @@
 		24FEF84916EF386500D8835E = {
 			isa = PBXGroup;
 			children = (
-				24FEF85716EF386500D8835E /* DSLFetchedResultsControllerDelegate */,
+				B56F5A7316F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate */,
 				24FEF85416EF386500D8835E /* Frameworks */,
 				24FEF85316EF386500D8835E /* Products */,
 			);
@@ -77,13 +75,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		24FEF85716EF386500D8835E /* DSLFetchedResultsControllerDelegate */ = {
+		B56F5A7316F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate */ = {
 			isa = PBXGroup;
 			children = (
-				24FEF85A16EF386500D8835E /* DSLFetchedResultsControllerDelegate.h */,
-				24FEF85C16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m */,
+				B56F5A7416F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.h */,
+				B56F5A7516F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.m */,
 			);
-			path = DSLFetchedResultsControllerDelegate;
+			name = DSLFetchedResultsControllerDelegate;
+			path = ../DSLFetchedResultsControllerDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +136,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				24FEF85D16EF386500D8835E /* DSLFetchedResultsControllerDelegate.m in Sources */,
+				B56F5A7616F5FE6C005CBE07 /* DSLFetchedResultsControllerDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
