@@ -53,6 +53,7 @@
     self = [self init];
     if (self != nil) {
         _tableOrCollectionView = tableView;
+        _sectionOffset = 0;
     }
 
     return self;
@@ -62,6 +63,7 @@
     self = [self init];
     if (self != nil) {
         _tableOrCollectionView = collectionView;
+        _sectionOffset = 0;
     }
 
     return self;
@@ -80,6 +82,9 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    indexPath = [self transposeIndexPath:indexPath];
+    newIndexPath = [self transposeIndexPath:newIndexPath];
+
     // Record the changes so we can apply them in controllerDidChangeContent:
     switch (type) {
         case NSFetchedResultsChangeInsert:
@@ -113,6 +118,8 @@
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    sectionIndex += self.sectionOffset;
+    
     // Record the changes so we can apply them in controllerDidChangeContent:
     switch (type) {
         case NSFetchedResultsChangeInsert:
@@ -208,6 +215,13 @@
     }
 
     return shouldUpdate;
+}
+
+
+#pragma mark 
+
+- (NSIndexPath*)transposeIndexPath:(NSIndexPath*)indexPath {
+    return [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section + self.sectionOffset];
 }
 
 @end
