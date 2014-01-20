@@ -39,6 +39,7 @@
 @interface DSLFetchedResultsControllerDelegate : NSObject<NSFetchedResultsControllerDelegate>
 
 @property (nonatomic, weak) id<DSLFetchedResultsControllerDelegateDelegate> delegate;
+@property (nonatomic, assign) NSUInteger sectionOffset;
 
 - (id)initWithTableView:(UITableView*)tableView;
 - (id)initWithCollectionView:(UICollectionView*)collectionView;
