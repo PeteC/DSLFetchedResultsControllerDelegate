@@ -117,7 +117,7 @@
     }
 }
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
     sectionIndex += self.sectionOffset;
     
     // Record the changes so we can apply them in controllerDidChangeContent:
@@ -137,7 +137,7 @@
 }
 
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    BOOL hasChanges = (self.insertedRowIndexPaths.count > 0 || self.deletedSectionIndexes.count > 0 || self.deletedRowIndexPaths.count > 0 || self.insertedRowIndexPaths > 0 || self.updatedRowIndexPaths.count > 0);
+    BOOL hasChanges = (self.insertedRowIndexPaths.count > 0 || self.deletedSectionIndexes.count > 0 || self.deletedRowIndexPaths.count > 0 || self.insertedRowIndexPaths.count > 0 || self.updatedRowIndexPaths.count > 0);
 
     if (hasChanges) {
         if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateWillUpdateContent:)]) {
