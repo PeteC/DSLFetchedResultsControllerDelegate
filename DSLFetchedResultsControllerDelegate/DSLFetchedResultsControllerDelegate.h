@@ -38,6 +38,8 @@
 
 @interface DSLFetchedResultsControllerDelegate : NSObject<NSFetchedResultsControllerDelegate>
 
+@property (nonatomic, strong, readonly) id view;
+
 @property (nonatomic, weak) id<DSLFetchedResultsControllerDelegateDelegate> delegate;
 @property (nonatomic, assign) NSUInteger sectionOffset;
 

@@ -69,6 +69,10 @@
     return self;
 }
 
+- (id)view {
+    return self.tableOrCollectionView;
+}
+
 
 #pragma mark - NSFetchedResultsControllerDelegate methods
 
