@@ -144,39 +144,43 @@
     BOOL hasChanges = (self.insertedRowIndexPaths.count > 0 || self.deletedSectionIndexes.count > 0 || self.deletedRowIndexPaths.count > 0 || self.insertedRowIndexPaths.count > 0 || self.updatedRowIndexPaths.count > 0);
 
     if (hasChanges) {
+        BOOL applyChanges = YES;
+
         if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateWillUpdateContent:)]) {
-            [self.delegate fetchedResultsControllerDelegateWillUpdateContent:self];
+            applyChanges = [self.delegate fetchedResultsControllerDelegateWillUpdateContent:self];
         }
 
-        // Apply the changes to whatever control we have
-        if ([self.tableOrCollectionView isKindOfClass:[UITableView class]]) {
-            UITableView *tableView = self.tableOrCollectionView;
-            [tableView beginUpdates];
+        if (applyChanges) {
+            // Apply the changes to whatever control we have
+            if ([self.tableOrCollectionView isKindOfClass:[UITableView class]]) {
+                UITableView *tableView = self.tableOrCollectionView;
+                [tableView beginUpdates];
 
-            [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
-            [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
+                [tableView deleteSections:self.deletedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
+                [tableView insertSections:self.insertedSectionIndexes withRowAnimation:[self sectionAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
 
-            [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
-            [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
-            [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate]];
+                [tableView deleteRowsAtIndexPaths:self.deletedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateDelete]];
+                [tableView insertRowsAtIndexPaths:self.insertedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateInsert]];
+                [tableView reloadRowsAtIndexPaths:self.updatedRowIndexPaths withRowAnimation:[self rowAnimationForChangeType:DSLFetchedResultsControllerDelegateUpdate]];
 
-            [tableView endUpdates];
-        }
-        else if ([self.tableOrCollectionView isKindOfClass:[UICollectionView class]]) {
-            UICollectionView *collectionView = self.tableOrCollectionView;
+                [tableView endUpdates];
+            }
+            else if ([self.tableOrCollectionView isKindOfClass:[UICollectionView class]]) {
+                UICollectionView *collectionView = self.tableOrCollectionView;
 
-            [collectionView performBatchUpdates:^{
-                [collectionView deleteSections:self.deletedSectionIndexes];
-                [collectionView insertSections:self.insertedSectionIndexes];
+                [collectionView performBatchUpdates:^{
+                    [collectionView deleteSections:self.deletedSectionIndexes];
+                    [collectionView insertSections:self.insertedSectionIndexes];
 
-                [collectionView deleteItemsAtIndexPaths:self.deletedRowIndexPaths];
-                [collectionView insertItemsAtIndexPaths:self.insertedRowIndexPaths];
-                [collectionView reloadItemsAtIndexPaths:self.updatedRowIndexPaths];
-            } completion:^(BOOL finished) {}];
-        }
+                    [collectionView deleteItemsAtIndexPaths:self.deletedRowIndexPaths];
+                    [collectionView insertItemsAtIndexPaths:self.insertedRowIndexPaths];
+                    [collectionView reloadItemsAtIndexPaths:self.updatedRowIndexPaths];
+                } completion:^(BOOL finished) {}];
+            }
 
-        if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateDidUpdateContent:)]) {
-            [self.delegate fetchedResultsControllerDelegateDidUpdateContent:self];
+            if ([self.delegate respondsToSelector:@selector(fetchedResultsControllerDelegateDidUpdateContent:)]) {
+                [self.delegate fetchedResultsControllerDelegateDidUpdateContent:self];
+            }
         }
     }
 

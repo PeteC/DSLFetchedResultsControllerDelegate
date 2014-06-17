@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, DSLFetchedResultsControllerDelegateChangeType) {
 - (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate sectionAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
 - (UITableViewRowAnimation)fetchedResultsControllerDelegate:(DSLFetchedResultsControllerDelegate*)delegate rowAnimationForChangeType:(DSLFetchedResultsControllerDelegateChangeType)changeType;
 
-- (void)fetchedResultsControllerDelegateWillUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate;
+- (BOOL)fetchedResultsControllerDelegateWillUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate; // Return NO to prevent updates to the associated table or collection view
 - (void)fetchedResultsControllerDelegateDidUpdateContent:(DSLFetchedResultsControllerDelegate*)delegate;
 
 @end
